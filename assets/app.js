@@ -99,13 +99,13 @@ function renderHero() {
   ].map((text) => `<span class="chip">${escapeHtml(text)}</span>`).join("");
 
   const hero = $("#hero");
-  hero.style.backgroundImage = build.art
-    ? `linear-gradient(90deg,rgba(4,4,4,.92),rgba(4,4,4,.15)),url("${cssUrl(build.art)}")`
-    : "";
+  hero.classList.toggle("has-art", Boolean(build.art));
+  hero.style.backgroundImage = build.art ? `url("${cssUrl(build.art)}")` : "";
+  $("#heroSelectionName").textContent = build.name;
 
   const launch = $("#heroLaunch");
   launch.disabled = !isLaunchable(build);
-  launch.textContent = isLaunchable(build) ? "Launch" : "Coming soon";
+  launch.textContent = isLaunchable(build) ? "Play" : "Coming soon";
   launch.onclick = () => launchBuild(build);
 
   $("#heroDetails").onclick = () => openDetails(build.id);
@@ -194,7 +194,7 @@ function renderDialog(id) {
 
   const launch = $("#dialogLaunch");
   launch.disabled = !isLaunchable(build);
-  launch.textContent = isLaunchable(build) ? "Launch" : "Coming soon";
+  launch.textContent = isLaunchable(build) ? "Play" : "Coming soon";
   launch.onclick = () => launchBuild(build);
 
   const favorite = $("#dialogFavorite");
@@ -225,12 +225,6 @@ function showToast(message) {
   toast.classList.add("show");
   clearTimeout(showToast.timer);
   showToast.timer = setTimeout(() => toast.classList.remove("show"), 1800);
-}
-
-function randomBuild() {
-  const pool = filteredBuilds();
-  if (!pool.length) return;
-  openDetails(pool[Math.floor(Math.random() * pool.length)].id);
 }
 
 function escapeHtml(value = "") {
@@ -284,7 +278,6 @@ document.addEventListener("keydown", (event) => {
 });
 
 $("#mobileMenu").addEventListener("click", () => $("#sidebar").classList.toggle("open"));
-$("#randomButton").addEventListener("click", randomBuild);
 $("#dialogClose").addEventListener("click", () => dialog.close());
 dialog.addEventListener("click", (event) => {
   if (event.target === dialog) dialog.close();
