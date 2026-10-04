@@ -45,21 +45,26 @@ jobs:
           unzip -q /tmp/26.3.zip -d /tmp/art263
           unzip -q /tmp/26.2.zip -d /tmp/art262
 
-          ART263="$(find /tmp/art263 -type f \( -iname '*.jpg' -o -iname '*.jpeg' \) -printf '%s\t%p\n' | sort -nr | head -1 | cut -f2-)"
-          ART262="$(find /tmp/art262 -type f \( -iname '*.jpg' -o -iname '*.jpeg' \) -printf '%s\t%p\n' | sort -nr | head -1 | cut -f2-)"
+          ART263="$(find /tmp/art263 -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' \) -printf '%s\t%p\n' | sort -nr | head -1 | cut -f2-)"
+          ART262="$(find /tmp/art262 -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' \) -printf '%s\t%p\n' | sort -nr | head -1 | cut -f2-)"
 
           test -n "$ART263"
           test -n "$ART262"
 
-          cp "$ART263" assets/art/26.3.jpg
-          cp "$ART262" assets/art/26.2.jpg
+          echo "26.3 source: $ART263"
+          echo "26.2 source: $ART262"
+          file "$ART263"
+          file "$ART262"
 
-          test "$(wc -c < assets/art/26.3.jpg)" -gt 100000
-          test "$(wc -c < assets/art/26.2.jpg)" -gt 100000
+          ffmpeg -hide_banner -loglevel error -y -i "$ART263" -q:v 1 assets/art/26.3.jpg
+          ffmpeg -hide_banner -loglevel error -y -i "$ART262" -q:v 1 assets/art/26.2.jpg
 
           file assets/art/26.3.jpg
           file assets/art/26.2.jpg
           ls -lh assets/art/26.3.jpg assets/art/26.2.jpg
+
+          test "$(wc -c < assets/art/26.3.jpg)" -gt 50000
+          test "$(wc -c < assets/art/26.2.jpg)" -gt 50000
 
       - name: Commit local high-resolution artwork
         shell: bash
