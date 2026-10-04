@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "featured": "monarch-26-3",
+  "builds": [
+    {
+      "id": "monarch-26-3",
+      "name": "Minecraft 26.3",
+      "version": "26.3",
+      "category": "vanilla",
+      "description": "Modern browser build slot for the Monarch library.",
+      "tags": ["modern", "wasm", "featured"],
+      "engine": "WebAssembly",
+      "status": "integration",
+      "year": "2026",
+      "launch": null
+    },
+    {
+      "id": "classic-1-8-8",
+      "name": "Minecraft 1.8.8",
+      "version": "1.8.8",
+      "category": "vanilla",
+      "description": "Classic combat-era build slot.",
+      "tags": ["classic", "pvp"],
+      "engine": "Web",
+      "status": "integration",
+      "year": "2015",
+      "launch": null
+    },
+    {
+      "id": "classic-1-5-2",
+      "name": "Minecraft 1.5.2",
+      "version": "1.5.2",
+      "category": "vanilla",
+      "description": "Legacy browser Minecraft build slot.",
+      "tags": ["legacy", "classic"],
+      "engine": "Web",
+      "status": "integration",
+      "year": "2013",
+      "launch": null
+    },
+    {
+      "id": "client-slot",
+      "name": "Client Collection",
+      "version": "Various",
+      "category": "client",
+      "description": "A home for alternate clients with their own features and UI.",
+      "tags": ["client", "utility"],
+      "engine": "Various",
+      "status": "integration",
+      "year": "—",
+      "launch": null
+    },
+    {
+      "id": "modded-slot",
+      "name": "Modded Collection",
+      "version": "Various",
+      "category": "modded",
+      "description": "Forge, Fabric, and purpose-built modded browser build entries.",
+      "tags": ["mods", "forge", "fabric"],
+      "engine": "Various",
+      "status": "integration",
+      "year": "—",
+      "launch": null
+    },
+    {
+      "id": "fps-slot",
+      "name": "FPS Clients",
+      "version": "Various",
+      "category": "fps",
+      "description": "Performance-focused builds tuned for weaker devices and competitive play.",
+      "tags": ["performance", "fps", "pvp"],
+      "engine": "Various",
+      "status": "integration",
+      "year": "—",
+      "launch": null
+    },
+    {
+      "id": "snapshot-slot",
+      "name": "Snapshots",
+      "version": "Experimental",
+      "category": "snapshot",
+      "description": "Experimental and in-development versions live here.",
+      "tags": ["snapshot", "experimental"],
+      "engine": "Various",
+      "status": "integration",
+      "year": "—",
+      "launch": null
+    }
+  ]
+}
