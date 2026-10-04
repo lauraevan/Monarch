@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0d0d0d">
+  <meta name="description" content="Monarch - a browser Minecraft launcher.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <title>Monarch</title>
+  <link rel="stylesheet" href="./assets/monarch-min.css">
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      registrations.forEach((registration) => registration.unregister());
+    });
+  }
+  if ("caches" in window) {
+    caches.keys().then((keys) => {
+      keys.filter((key) => key.startsWith("monarch-shell-"))
+        .forEach((key) => caches.delete(key));
+    });
+  }
+</script>
+</head>
+<body>
+  <div class="launcher">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">MONARCH</div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-view="home">Home</button>
+        <button class="nav-item" data-view="vanilla">Regular</button>
+        <button class="nav-item" data-view="client">Clients</button>
+        <button class="nav-item" data-view="modded">Modded</button>
+        <button class="nav-item" data-view="fps">FPS</button>
+        <button class="nav-item" data-view="snapshot">Snapshots</button>
+      </nav>
+
+      <div class="sidebar-bottom">Monarch</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-button" id="mobileMenu" aria-label="Open navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="topbar-title">Minecraft</div>
+        <nav class="top-tabs">
+          <button class="top-tab active">Play</button>
+          <button class="top-tab" id="libraryTab">Library</button>
+        </nav>
+      </header>
+
+      <section class="content">
+        <section class="hero" id="hero">
+          <div class="hero-placeholder" id="heroPlaceholder">MONARCH</div>
+          <div class="hero-copy">
+            <span id="heroVersion">26.3</span>
+            <h1 id="heroTitle">Minecraft 26.3</h1>
+            <p id="heroDescription">Choose a build and play.</p>
+          </div>
+        </section>
+
+        <section class="launch-panel">
+          <label class="build-select-wrap">
+            <span>Version</span>
+            <select id="buildSelect" aria-label="Choose build"></select>
+          </label>
+
+          <button class="play-button" id="playButton">PLAY</button>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./assets/monarch-min.js" defer></script>
+</body>
+</html>
