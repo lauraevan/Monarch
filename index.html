@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#101010">
+  <meta name="theme-color" content="#0d0d0d">
   <meta name="description" content="Monarch - a browser Minecraft launcher.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -12,173 +12,57 @@
   <link rel="stylesheet" href="./assets/styles.css">
 </head>
 <body>
-  <div class="launcher-shell">
+  <div class="launcher">
     <aside class="sidebar" id="sidebar">
-      <div class="account-block">
-        <div class="account-avatar" aria-hidden="true"></div>
-        <div class="account-copy">
-          <strong>Monarch Player</strong>
-          <span>Browser profile</span>
-        </div>
-        <button class="account-menu" aria-label="Account menu">⌄</button>
-      </div>
+      <div class="brand">MONARCH</div>
 
-      <nav class="game-nav" aria-label="Monarch sections">
-        <button class="game-nav-item active" data-view="home">
-          <span class="nav-icon home-icon" aria-hidden="true"></span>
-          <span>Home</span>
-        </button>
-
-        <div class="nav-divider"></div>
-
-        <button class="game-nav-item" data-view="vanilla">
-          <span class="nav-icon grass-icon" aria-hidden="true"></span>
-          <span>Regular versions</span>
-        </button>
-        <button class="game-nav-item" data-view="client">
-          <span class="nav-icon client-icon" aria-hidden="true"></span>
-          <span>Clients</span>
-        </button>
-        <button class="game-nav-item" data-view="modded">
-          <span class="nav-icon mod-icon" aria-hidden="true"></span>
-          <span>Modded</span>
-        </button>
-        <button class="game-nav-item" data-view="fps">
-          <span class="nav-icon speed-icon" aria-hidden="true"></span>
-          <span>FPS clients</span>
-        </button>
-        <button class="game-nav-item" data-view="snapshot">
-          <span class="nav-icon snapshot-icon" aria-hidden="true"></span>
-          <span>Snapshots</span>
-        </button>
-        <button class="game-nav-item" data-view="all">
-          <span class="nav-icon library-icon" aria-hidden="true"></span>
-          <span>All builds</span>
-          <span class="nav-count" id="allCount">0</span>
-        </button>
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-view="home">Home</button>
+        <button class="nav-item" data-view="vanilla">Regular</button>
+        <button class="nav-item" data-view="client">Clients</button>
+        <button class="nav-item" data-view="modded">Modded</button>
+        <button class="nav-item" data-view="fps">FPS</button>
+        <button class="nav-item" data-view="snapshot">Snapshots</button>
       </nav>
 
-      <div class="sidebar-bottom">
-        <button class="utility-nav" data-view="recent"><span>Recently played</span></button>
-        <button class="utility-nav" data-view="favorites"><span>Favorites</span><span id="favoriteCount">0</span></button>
-        <button class="utility-nav" id="settingsButton"><span>Settings</span></button>
-        <div class="launcher-version">MONARCH WEB LAUNCHER</div>
-      </div>
+      <div class="sidebar-bottom">Monarch</div>
     </aside>
 
     <main class="main">
-      <header class="game-header">
-        <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">
+      <header class="topbar">
+        <button class="menu-button" id="mobileMenu" aria-label="Open navigation">
           <span></span><span></span><span></span>
         </button>
-
-        <div class="game-heading">
-          <div class="game-kicker">MONARCH</div>
-          <strong>WEB EDITION</strong>
-        </div>
-
-        <nav class="header-tabs" aria-label="Launcher pages">
-          <button class="header-tab active" data-tab="play">Play</button>
-          <button class="header-tab" data-tab="installations">Installations</button>
-          <button class="header-tab" data-tab="news">News</button>
-          <button class="header-tab" data-tab="patch-notes">Patch Notes</button>
+        <div class="topbar-title">Minecraft</div>
+        <nav class="top-tabs">
+          <button class="top-tab active">Play</button>
+          <button class="top-tab" id="libraryTab">Library</button>
         </nav>
-
-        <label class="header-search" aria-label="Search builds">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.65A8 8 0 1 1 3 11a8 8 0 0 1 16 0Z"/></svg>
-          <input id="searchInput" type="search" autocomplete="off" placeholder="Search">
-        </label>
       </header>
 
-      <section class="play-layout" id="playSection">
-        <div class="hero-stage">
-          <section class="hero-art" id="hero">
-            <div class="hero-placeholder" id="heroPlaceholder">
-              <span>MONARCH</span>
-              <small>Featured artwork</small>
-            </div>
-            <div class="hero-caption">
-              <div class="hero-caption-top">
-                <span id="heroEyebrow">FEATURED BUILD</span>
-                <span id="heroVersion"></span>
-              </div>
-              <h1 id="heroTitle">Minecraft</h1>
-              <p id="heroDescription">Choose a build and start playing.</p>
-            </div>
-          </section>
-
-          <aside class="promo-panel">
-            <div class="promo-inner">
-              <span class="promo-kicker">MONARCH SPOTLIGHT</span>
-              <h2>Every build.<br>One launcher.</h2>
-              <p>Regular versions, clients, modded builds, performance clients and experimental releases all live in one library.</p>
-              <div class="promo-rule"></div>
-              <span class="promo-note">More artwork and launcher news will appear here.</span>
-            </div>
-          </aside>
-        </div>
-
-        <section class="launch-strip">
-          <label class="build-picker">
-            <span class="picker-icon" aria-hidden="true"></span>
-            <span class="picker-copy">
-              <small>Selected build</small>
-              <select id="buildSelect" aria-label="Selected build"></select>
-            </span>
-          </label>
-
-          <button class="play-button" id="heroLaunch">PLAY</button>
-
-          <div class="launch-account">
-            <div class="launch-status-dot" aria-hidden="true"></div>
-            <div>
-              <small>Status</small>
-              <strong id="selectedStatus">Integration queued</strong>
-            </div>
-            <button class="more-button" id="heroDetails" aria-label="Build details">•••</button>
+      <section class="content">
+        <section class="hero" id="hero">
+          <div class="hero-placeholder" id="heroPlaceholder">MONARCH</div>
+          <div class="hero-copy">
+            <span id="heroVersion">26.3</span>
+            <h1 id="heroTitle">Minecraft 26.3</h1>
+            <p id="heroDescription">Choose a build and play.</p>
           </div>
         </section>
-      </section>
 
-      <section class="library-section" id="librarySection">
-        <div class="library-heading">
-          <div>
-            <span class="section-kicker" id="viewEyebrow">MONARCH LIBRARY</span>
-            <h2 id="viewTitle">Featured builds</h2>
-          </div>
-          <div class="library-tools">
-            <span id="resultCount"></span>
-          </div>
-        </div>
+        <section class="launch-panel">
+          <label class="build-select-wrap">
+            <span>Version</span>
+            <select id="buildSelect" aria-label="Choose build"></select>
+          </label>
 
-        <div class="build-grid" id="buildGrid" aria-live="polite"></div>
-
-        <div class="empty-state hidden" id="emptyState">
-          <strong>No builds found</strong>
-          <span>Try another search or section.</span>
-        </div>
+          <button class="play-button" id="playButton">PLAY</button>
+        </section>
       </section>
     </main>
   </div>
 
-  <dialog class="details-dialog" id="detailsDialog">
-    <button class="dialog-close" id="dialogClose" aria-label="Close">×</button>
-    <div class="dialog-cover" id="dialogCover"></div>
-    <div class="dialog-body">
-      <div class="dialog-kicker" id="dialogEyebrow"></div>
-      <h2 id="dialogTitle"></h2>
-      <p id="dialogDescription"></p>
-      <div class="detail-chips" id="dialogChips"></div>
-      <div class="detail-facts" id="dialogFacts"></div>
-      <div class="dialog-actions">
-        <button class="dialog-play" id="dialogLaunch">PLAY</button>
-        <button class="dialog-secondary" id="dialogFavorite">Add favorite</button>
-      </div>
-    </div>
-  </dialog>
-
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
   <script src="./assets/app.js" defer></script>
 </body>
 </html>
