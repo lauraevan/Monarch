@@ -17,7 +17,7 @@
       "status": "integration",
       "year": "2026",
       "launch": null,
-      "art": "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/Minecraft_WildernessBound.Net_1170x500.jpg"
+      "art": "./assets/art/26.3.webp"
     },
     {
       "id": "modern-26-2",
@@ -33,7 +33,7 @@
       "status": "integration",
       "year": "2026",
       "launch": null,
-      "art": "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/screenshots/MCV_SummerDropKeyArt_NetBlogEditorial_1170x500.jpg"
+      "art": "./assets/art/26.2.webp"
     },
     {
       "id": "modern-26-1-2",
