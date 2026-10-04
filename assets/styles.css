@@ -238,6 +238,7 @@ button:focus-visible,input:focus-visible,a:focus-visible{
   letter-spacing:.12em;
   z-index:0;
 }
+.hero.has-art::before{display:none}
 .hero-shade{
   position:absolute;
   inset:0;
