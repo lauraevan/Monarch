@@ -1,0 +1,318 @@
+{
+  "schema": 1,
+  "featured": "monarch-26-3",
+  "builds": [
+    {
+      "id": "monarch-26-3",
+      "name": "Minecraft 26.3",
+      "version": "26.3",
+      "category": "vanilla",
+      "description": "Modern browser build slot for Monarch. This will be connected only after a verified build is selected.",
+      "tags": [
+        "modern",
+        "wasm",
+        "featured"
+      ],
+      "engine": "WebAssembly",
+      "status": "integration",
+      "year": "2026",
+      "launch": null,
+      "art": "./assets/art/26.3.webp"
+    },
+    {
+      "id": "modern-26-2",
+      "name": "Minecraft 26.2",
+      "version": "26.2",
+      "category": "vanilla",
+      "description": "Modern 26.2 browser build slot for a verified WASM/TeaVM target.",
+      "tags": [
+        "modern",
+        "wasm"
+      ],
+      "engine": "WebAssembly",
+      "status": "integration",
+      "year": "2026",
+      "launch": null,
+      "art": "./assets/art/26.2.webp"
+    },
+    {
+      "id": "modern-26-1-2",
+      "name": "Minecraft 26.1.2",
+      "version": "26.1.2",
+      "category": "vanilla",
+      "description": "Experimental modern-version slot. Performance and compatibility vary heavily across ports.",
+      "tags": [
+        "modern",
+        "experimental"
+      ],
+      "engine": "WebAssembly",
+      "status": "experimental",
+      "year": "2026",
+      "launch": null
+    },
+    {
+      "id": "modern-1-21-11",
+      "name": "Minecraft 1.21.11",
+      "version": "1.21.11",
+      "category": "vanilla",
+      "description": "Experimental modern browser-version slot.",
+      "tags": [
+        "modern",
+        "experimental"
+      ],
+      "engine": "WebAssembly",
+      "status": "experimental",
+      "year": "—",
+      "launch": null
+    },
+    {
+      "id": "modern-1-16-5",
+      "name": "Minecraft 1.16.5",
+      "version": "1.16.5",
+      "category": "vanilla",
+      "description": "Experimental higher-version browser build slot.",
+      "tags": [
+        "modern",
+        "experimental"
+      ],
+      "engine": "WebAssembly",
+      "status": "experimental",
+      "year": "—",
+      "launch": null
+    },
+    {
+      "id": "release-1-12-2",
+      "name": "Minecraft 1.12.2",
+      "version": "1.12.2",
+      "category": "vanilla",
+      "description": "One of the major Eaglercraft-era versions, with a larger feature set than 1.8.8.",
+      "tags": [
+        "major",
+        "singleplayer",
+        "multiplayer"
+      ],
+      "engine": "Web",
+      "status": "integration",
+      "year": "2017",
+      "launch": null
+    },
+    {
+      "id": "release-1-11",
+      "name": "Minecraft 1.11",
+      "version": "1.11",
+      "category": "vanilla",
+      "description": "Unofficial/WIP browser-version slot.",
+      "tags": [
+        "unofficial",
+        "wip"
+      ],
+      "engine": "Web",
+      "status": "experimental",
+      "year": "2016",
+      "launch": null
+    },
+    {
+      "id": "release-1-9-2",
+      "name": "Minecraft 1.9.2",
+      "version": "1.9.2",
+      "category": "vanilla",
+      "description": "Unofficial browser-version slot.",
+      "tags": [
+        "unofficial",
+        "combat-update"
+      ],
+      "engine": "Web",
+      "status": "integration",
+      "year": "2016",
+      "launch": null
+    },
+    {
+      "id": "release-1-8-8",
+      "name": "Minecraft 1.8.8",
+      "version": "1.8.8",
+      "category": "vanilla",
+      "description": "Major EaglercraftX-era version and a strong fit for multiplayer and PvP.",
+      "tags": [
+        "major",
+        "classic",
+        "pvp"
+      ],
+      "engine": "Web",
+      "status": "integration",
+      "year": "2015",
+      "launch": null
+    },
+    {
+      "id": "release-1-6-4",
+      "name": "Minecraft 1.6.4",
+      "version": "1.6.4",
+      "category": "vanilla",
+      "description": "Unofficial legacy browser-version slot.",
+      "tags": [
+        "unofficial",
+        "legacy"
+      ],
+      "engine": "Web",
+      "status": "integration",
+      "year": "2013",
+      "launch": null
+    },
+    {
+      "id": "release-1-5-2",
+      "name": "Minecraft 1.5.2",
+      "version": "1.5.2",
+      "category": "vanilla",
+      "description": "The original major Eaglercraft version line.",
+      "tags": [
+        "major",
+        "legacy",
+        "classic"
+      ],
+      "engine": "Web",
+      "status": "integration",
+      "year": "2013",
+      "launch": null
+    },
+    {
+      "id": "release-1-2-5",
+      "name": "Minecraft 1.2.5",
+      "version": "1.2.5",
+      "category": "vanilla",
+      "description": "Early legacy browser-version slot.",
+      "tags": [
+        "legacy",
+        "unofficial"
+      ],
+      "engine": "Web",
+      "status": "integration",
+      "year": "2012",
+      "launch": null
+    },
+    {
+      "id": "beta-1-7-3",
+      "name": "Minecraft Beta 1.7.3",
+      "version": "Beta 1.7.3",
+      "category": "vanilla",
+      "description": "Legacy beta browser build.",
+      "tags": [
+        "beta",
+        "legacy",
+        "unofficial"
+      ],
+      "engine": "Web",
+      "status": "integration",
+      "year": "2011",
+      "launch": null
+    },
+    {
+      "id": "beta-1-3",
+      "name": "Minecraft Beta 1.3",
+      "version": "Beta 1.3",
+      "category": "vanilla",
+      "description": "Older beta browser build.",
+      "tags": [
+        "beta",
+        "legacy",
+        "unofficial"
+      ],
+      "engine": "Web",
+      "status": "integration",
+      "year": "2011",
+      "launch": null
+    },
+    {
+      "id": "alpha-1-2-6",
+      "name": "Minecraft Alpha 1.2.6",
+      "version": "Alpha 1.2.6",
+      "category": "vanilla",
+      "description": "Very early alpha browser build.",
+      "tags": [
+        "alpha",
+        "legacy",
+        "unofficial"
+      ],
+      "engine": "Web",
+      "status": "integration",
+      "year": "2010",
+      "launch": null
+    },
+    {
+      "id": "indev",
+      "name": "Minecraft Indev",
+      "version": "Indev",
+      "category": "vanilla",
+      "description": "Very early Minecraft browser build slot.",
+      "tags": [
+        "indev",
+        "legacy",
+        "unofficial"
+      ],
+      "engine": "Web",
+      "status": "integration",
+      "year": "2010",
+      "launch": null
+    },
+    {
+      "id": "client-slot",
+      "name": "Client Collection",
+      "version": "Various",
+      "category": "client",
+      "description": "A home for alternate clients with their own features and UI.",
+      "tags": [
+        "client",
+        "utility"
+      ],
+      "engine": "Various",
+      "status": "integration",
+      "year": "—",
+      "launch": null
+    },
+    {
+      "id": "modded-slot",
+      "name": "Modded Collection",
+      "version": "Various",
+      "category": "modded",
+      "description": "Forge, Fabric, and purpose-built modded browser build entries.",
+      "tags": [
+        "mods",
+        "forge",
+        "fabric"
+      ],
+      "engine": "Various",
+      "status": "integration",
+      "year": "—",
+      "launch": null
+    },
+    {
+      "id": "fps-slot",
+      "name": "FPS Clients",
+      "version": "Various",
+      "category": "fps",
+      "description": "Performance-focused builds tuned for weaker devices and competitive play.",
+      "tags": [
+        "performance",
+        "fps",
+        "pvp"
+      ],
+      "engine": "Various",
+      "status": "integration",
+      "year": "—",
+      "launch": null
+    },
+    {
+      "id": "snapshot-slot",
+      "name": "Snapshots",
+      "version": "Experimental",
+      "category": "snapshot",
+      "description": "Experimental and in-development versions live here.",
+      "tags": [
+        "snapshot",
+        "experimental"
+      ],
+      "engine": "Various",
+      "status": "integration",
+      "year": "—",
+      "launch": null
+    }
+  ]
+}
