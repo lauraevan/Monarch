@@ -20,8 +20,8 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p assets/art
-          curl -fL --retry 3 -o assets/art/26.3.jpg "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/Minecraft_WildernessBound.Net_1170x500.jpg"
-          curl -fL --retry 3 -o assets/art/26.2.jpg "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/screenshots/MCV_SummerDropKeyArt_NetBlogEditorial_1170x500.jpg"
+          curl --http1.1 -fL --retry 5 --retry-all-errors -o assets/art/26.3.jpg "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/Minecraft_WildernessBound.Net_1170x500.jpg"
+          curl --http1.1 -fL --retry 5 --retry-all-errors -o assets/art/26.2.jpg "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/screenshots/MCV_SummerDropKeyArt_NetBlogEditorial_1170x500.jpg"
           test "$(wc -c < assets/art/26.3.jpg)" -gt 50000
           test "$(wc -c < assets/art/26.2.jpg)" -gt 50000
           file assets/art/26.3.jpg
