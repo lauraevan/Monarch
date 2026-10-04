@@ -1,4 +1,4 @@
-const CACHE = "monarch-shell-v1";
+const CACHE = "monarch-shell-v2";
 const SHELL = [
   "./",
   "./index.html",
