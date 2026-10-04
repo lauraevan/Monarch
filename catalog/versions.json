@@ -17,7 +17,7 @@
       "status": "integration",
       "year": "2026",
       "launch": null,
-      "art": "./assets/art/26.3.webp"
+      "art": "./assets/art/26.3.png"
     },
     {
       "id": "modern-26-2",
@@ -33,7 +33,7 @@
       "status": "integration",
       "year": "2026",
       "launch": null,
-      "art": "./assets/art/26.2.webp"
+      "art": "./assets/art/26.2.jpg"
     },
     {
       "id": "modern-26-1-2",
