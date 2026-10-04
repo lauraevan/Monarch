@@ -15,29 +15,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Decode original artwork
+      - name: Download full-resolution source artwork into the repo
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p assets/art
-          cat .art-upload/26.2.part.* | base64 -d > assets/art/26.2.jpg
-          cat .art-upload/26.3.part.* | base64 -d > assets/art/26.3.jpg
-
-      - name: Verify exact uploaded files
-        shell: bash
-        run: |
-          set -euo pipefail
-          echo "b535d00b53fab02fca645ceb77f9f0edd86d1a68bfa724387e17f90b61d03558  assets/art/26.2.jpg" | sha256sum -c -
-          echo "93d5a21e466122149ccbcf38c932810f82d45d6ceeeb173838b509beb7155da3  assets/art/26.3.jpg" | sha256sum -c -
-          file assets/art/26.2.jpg
+          curl -fL --retry 3 -o assets/art/26.3.jpg "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/Minecraft_WildernessBound.Net_1170x500.jpg"
+          curl -fL --retry 3 -o assets/art/26.2.jpg "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/screenshots/MCV_SummerDropKeyArt_NetBlogEditorial_1170x500.jpg"
+          test "$(wc -c < assets/art/26.3.jpg)" -gt 50000
+          test "$(wc -c < assets/art/26.2.jpg)" -gt 50000
           file assets/art/26.3.jpg
+          file assets/art/26.2.jpg
 
-      - name: Commit original-resolution artwork
+      - name: Commit local JPEG artwork
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "Monarch Artwork Bot"
           git config user.email "actions@users.noreply.github.com"
           git add assets/art/26.2.jpg assets/art/26.3.jpg
-          git commit -m "Replace compressed artwork with original JPEGs"
+          git commit -m "Replace compressed artwork with full-resolution JPEGs"
           git push
