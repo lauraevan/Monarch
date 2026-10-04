@@ -1,0 +1,11 @@
+{
+  "name": "Monarch",
+  "short_name": "Monarch",
+  "description": "A fast browser Minecraft launcher.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#090909",
+  "theme_color": "#090909",
+  "orientation": "any",
+  "categories": ["games", "utilities"]
+}
