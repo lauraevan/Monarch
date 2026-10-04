@@ -395,7 +395,7 @@ loadCatalog();
 
 if ("serviceWorker" in navigator && location.protocol !== "file:") {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js").catch((error) => {
+    navigator.serviceWorker.register("./sw.js?monarch=3").catch((error) => {
       console.warn("Monarch service worker registration failed:", error);
     });
   });
