@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="Monarch - a fast browser Minecraft launcher.">
+  <title>Monarch</title>
+  <link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#home" aria-label="Monarch home">
+        <span class="brand-mark">M</span>
+        <span class="brand-name">Monarch</span>
+      </a>
+
+      <nav class="nav" aria-label="Launcher sections">
+        <button class="nav-item active" data-view="home"><span>Home</span></button>
+        <button class="nav-item" data-view="all"><span>All builds</span><span class="nav-count" id="allCount">0</span></button>
+        <button class="nav-item" data-view="vanilla"><span>Regular</span></button>
+        <button class="nav-item" data-view="client"><span>Clients</span></button>
+        <button class="nav-item" data-view="modded"><span>Modded</span></button>
+        <button class="nav-item" data-view="fps"><span>FPS</span></button>
+        <button class="nav-item" data-view="snapshot"><span>Snapshots</span></button>
+      </nav>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Library</div>
+        <button class="nav-item" data-view="favorites"><span>Favorites</span><span class="nav-count" id="favoriteCount">0</span></button>
+        <button class="nav-item" data-view="recent"><span>Recently played</span></button>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="status-dot"></div>
+        <span>Launcher ready</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.65A8 8 0 1 1 3 11a8 8 0 0 1 16 0Z"/></svg>
+          <input id="searchInput" type="search" autocomplete="off" placeholder="Search versions, clients, mods...">
+          <kbd>/</kbd>
+        </div>
+        <button class="icon-button" id="randomButton" title="Random build" aria-label="Random build">↻</button>
+      </header>
+
+      <section class="content" id="content">
+        <section class="hero" id="hero">
+          <div class="hero-scrim"></div>
+          <div class="hero-copy">
+            <div class="eyebrow" id="heroEyebrow">FEATURED BUILD</div>
+            <h1 id="heroTitle">Monarch</h1>
+            <p id="heroDescription">Every build. One launcher.</p>
+            <div class="hero-meta" id="heroMeta"></div>
+            <div class="hero-actions">
+              <button class="primary-button" id="heroLaunch">Launch</button>
+              <button class="secondary-button" id="heroDetails">Details</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow" id="viewEyebrow">MONARCH LIBRARY</div>
+              <h2 id="viewTitle">Featured</h2>
+            </div>
+            <div class="result-count" id="resultCount"></div>
+          </div>
+          <div class="build-grid" id="buildGrid" aria-live="polite"></div>
+          <div class="empty-state hidden" id="emptyState">
+            <h3>No builds found</h3>
+            <p>Try another search or category.</p>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="details-dialog" id="detailsDialog">
+    <button class="dialog-close" id="dialogClose" aria-label="Close">×</button>
+    <div class="dialog-cover" id="dialogCover"></div>
+    <div class="dialog-body">
+      <div class="eyebrow" id="dialogEyebrow"></div>
+      <h2 id="dialogTitle"></h2>
+      <p id="dialogDescription"></p>
+      <div class="detail-chips" id="dialogChips"></div>
+      <div class="detail-facts" id="dialogFacts"></div>
+      <div class="dialog-actions">
+        <button class="primary-button" id="dialogLaunch">Launch</button>
+        <button class="secondary-button" id="dialogFavorite">Add favorite</button>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="./assets/app.js" defer></script>
+</body>
+</html>
