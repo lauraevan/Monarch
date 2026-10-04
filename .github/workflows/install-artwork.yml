@@ -12,27 +12,61 @@ permissions:
 jobs:
   install-artwork:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download full-resolution source artwork into the repo
+      - name: Download official full-resolution wallpaper archives
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p assets/art
-          curl --http1.1 -fL --retry 5 --retry-all-errors -o assets/art/26.3.jpg "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/Minecraft_WildernessBound.Net_1170x500.jpg"
-          curl --http1.1 -fL --retry 5 --retry-all-errors -o assets/art/26.2.jpg "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/screenshots/MCV_SummerDropKeyArt_NetBlogEditorial_1170x500.jpg"
-          test "$(wc -c < assets/art/26.3.jpg)" -gt 50000
-          test "$(wc -c < assets/art/26.2.jpg)" -gt 50000
+          python3 - <<'PY'
+          import urllib.request
+          files = {
+              "/tmp/26.3.zip": "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/software/wallpapers_wilderness_bound_drop.zip",
+              "/tmp/26.2.zip": "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/software/wallpapers_chase_the_skies_update.zip",
+          }
+          for path, url in files.items():
+              req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+              with urllib.request.urlopen(req, timeout=45) as response, open(path, "wb") as out:
+                  while True:
+                      chunk = response.read(1024 * 1024)
+                      if not chunk:
+                          break
+                      out.write(chunk)
+          PY
+
+      - name: Extract highest-quality JPEG artwork
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/art263 /tmp/art262
+          mkdir -p /tmp/art263 /tmp/art262 assets/art
+          unzip -q /tmp/26.3.zip -d /tmp/art263
+          unzip -q /tmp/26.2.zip -d /tmp/art262
+
+          ART263="$(find /tmp/art263 -type f \( -iname '*.jpg' -o -iname '*.jpeg' \) -printf '%s\t%p\n' | sort -nr | head -1 | cut -f2-)"
+          ART262="$(find /tmp/art262 -type f \( -iname '*.jpg' -o -iname '*.jpeg' \) -printf '%s\t%p\n' | sort -nr | head -1 | cut -f2-)"
+
+          test -n "$ART263"
+          test -n "$ART262"
+
+          cp "$ART263" assets/art/26.3.jpg
+          cp "$ART262" assets/art/26.2.jpg
+
+          test "$(wc -c < assets/art/26.3.jpg)" -gt 100000
+          test "$(wc -c < assets/art/26.2.jpg)" -gt 100000
+
           file assets/art/26.3.jpg
           file assets/art/26.2.jpg
+          ls -lh assets/art/26.3.jpg assets/art/26.2.jpg
 
-      - name: Commit local JPEG artwork
+      - name: Commit local high-resolution artwork
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "Monarch Artwork Bot"
           git config user.email "actions@users.noreply.github.com"
           git add assets/art/26.2.jpg assets/art/26.3.jpg
-          git commit -m "Replace compressed artwork with full-resolution JPEGs"
+          git commit -m "Replace compressed artwork with high-resolution JPEGs"
           git push
