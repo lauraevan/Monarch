@@ -49,6 +49,15 @@ function isLaunchable(build) {
   return Boolean(build?.launch?.target);
 }
 
+function statusLabel(build) {
+  if (isLaunchable(build)) return "Ready";
+  return {
+    integration: "Integration queued",
+    experimental: "Experimental",
+    broken: "Temporarily unavailable"
+  }[build?.status] || "Integration queued";
+}
+
 function filteredBuilds() {
   let builds = [...state.catalog];
 
@@ -86,7 +95,7 @@ function renderHero() {
     build.version,
     categoryLabel(build.category),
     build.engine,
-    build.status === "ready" ? "Ready to play" : "Integration queued"
+    statusLabel(build)
   ].map((text) => `<span class="chip">${escapeHtml(text)}</span>`).join("");
 
   const hero = $("#hero");
@@ -128,7 +137,7 @@ function renderGrid() {
         <p class="card-description">${escapeHtml(build.description)}</p>
         <div class="card-footer">
           <span>${escapeHtml(build.engine || "Web")}</span>
-          <span class="launch-status ${isLaunchable(build) ? "ready" : ""}">${isLaunchable(build) ? "Ready" : "Soon"}</span>
+          <span class="launch-status ${isLaunchable(build) ? "ready" : ""}">${escapeHtml(statusLabel(build))}</span>
         </div>
       </div>`;
 
@@ -181,7 +190,7 @@ function renderDialog(id) {
   $("#dialogFacts").innerHTML = `
     <div class="fact"><div class="fact-label">Version</div><div class="fact-value">${escapeHtml(build.version)}</div></div>
     <div class="fact"><div class="fact-label">Engine</div><div class="fact-value">${escapeHtml(build.engine || "Web")}</div></div>
-    <div class="fact"><div class="fact-label">Status</div><div class="fact-value">${isLaunchable(build) ? "Ready to launch" : "Integration queued"}</div></div>`;
+    <div class="fact"><div class="fact-label">Status</div><div class="fact-value">${escapeHtml(statusLabel(build))}</div></div>`;
 
   const launch = $("#dialogLaunch");
   launch.disabled = !isLaunchable(build);
