@@ -1,0 +1,43 @@
+name: Install Monarch artwork
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".art-upload/READY"
+
+permissions:
+  contents: write
+
+jobs:
+  install-artwork:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Decode original artwork
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets/art
+          cat .art-upload/26.2.part.* | base64 -d > assets/art/26.2.jpg
+          cat .art-upload/26.3.part.* | base64 -d > assets/art/26.3.jpg
+
+      - name: Verify exact uploaded files
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "b535d00b53fab02fca645ceb77f9f0edd86d1a68bfa724387e17f90b61d03558  assets/art/26.2.jpg" | sha256sum -c -
+          echo "93d5a21e466122149ccbcf38c932810f82d45d6ceeeb173838b509beb7155da3  assets/art/26.3.jpg" | sha256sum -c -
+          file assets/art/26.2.jpg
+          file assets/art/26.3.jpg
+
+      - name: Commit original-resolution artwork
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "Monarch Artwork Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add assets/art/26.2.jpg assets/art/26.3.jpg
+          git commit -m "Replace compressed artwork with original JPEGs"
+          git push
